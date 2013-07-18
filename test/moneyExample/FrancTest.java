@@ -2,6 +2,7 @@ package moneyExample;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
+import org.specbyexample.moneyexample.Dollar;
 import org.specbyexample.moneyexample.Franc;
 
 public class FrancTest {
@@ -17,5 +18,6 @@ public class FrancTest {
     public void testEquality() {
         assertTrue(new Franc(5).equals(new Franc(5)));
         assertFalse(new Franc(3).equals(new Franc(5)));
+        assertFalse(new Dollar(5).equals(new Franc(5)));
     }
 }

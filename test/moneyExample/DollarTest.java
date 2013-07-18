@@ -3,6 +3,7 @@ package moneyExample;
 import static org.junit.Assert.*;
 import org.junit.Test;
 import org.specbyexample.moneyexample.Dollar;
+import org.specbyexample.moneyexample.Franc;
 public class DollarTest {
     
     @Test
@@ -16,6 +17,7 @@ public class DollarTest {
     public void testEquality(){
         assertTrue(new Dollar(5).equals(new Dollar(5)));
         assertFalse(new Dollar(3).equals(new Dollar(5)));
+        assertFalse(new Dollar(5).equals(new Franc(5)));
     }
        
 }
