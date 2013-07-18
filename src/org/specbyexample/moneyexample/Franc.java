@@ -1,8 +1,6 @@
 package org.specbyexample.moneyexample;
 
-public class Franc {
-
-    private int amount;
+public class Franc extends Money{
 
     public Franc(int amount) {
         this.amount = amount;
@@ -11,11 +9,4 @@ public class Franc {
     public Franc times(int multiplier) {
         return new Franc(amount * multiplier);
     }
-
-    @Override
-    public boolean equals(Object object) {
-        return amount == ((Franc)object).amount;
-    }
-    
-    
 }
