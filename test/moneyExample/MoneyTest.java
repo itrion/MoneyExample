@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.specbyexample.moneyexample.Bank;
 import org.specbyexample.moneyexample.Expression;
 import org.specbyexample.moneyexample.Money;
+import org.specbyexample.moneyexample.Sum;
 
 public class MoneyTest {
 
@@ -38,5 +39,29 @@ public class MoneyTest {
     public void testCurrency(){
         assertEquals("USD", Money.dollar(1).getCurrency());
         assertEquals("CHF", Money.franc(1).getCurrency());
+    }
+    
+    @Test
+    public void testPlusReturnsSum(){
+        Money five = Money.dollar(5);
+        Expression result = five.plus(five);
+        Sum sum = (Sum) result;
+        assertEquals(five, sum.augend);
+        assertEquals(five, sum.addend);
+    }
+    
+    @Test
+    public void testReduceSum(){
+        Expression sum = new Sum(Money.dollar(3), Money.dollar(4));
+        Bank bank = new Bank();
+        Money result = bank.reduce(sum, "USD");
+        assertEquals(Money.dollar(7), result);
+    }
+    
+    @Test
+    public void testReduceMoney(){
+        Bank bank = new Bank();
+        Money result = bank.reduce(Money.dollar(1), "USD");
+        assertEquals(Money.dollar(1), result);
     }
 }
